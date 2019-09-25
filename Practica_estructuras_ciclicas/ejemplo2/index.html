@@ -10,15 +10,35 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-      <div class="container">
-          <div class="jumbotron">
-              <ul id="listaNumerica" class="list-group">
+    <div class="container">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-12" >
+                <div id="cajaAlumnos">
 
-                  
-              </ul>
+                </div>
 
-          </div>
-      </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <button type="button"  id="BtnAgregarFG" class="btn btn-primary btn-lg btn-block">Agregar alumno</button>
+            </div>
+            <div class="row mt-2">
+                <button type="button"  id="btnCalcular" class="btn btn-success btn-lg btn-block">Calcular</button>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col-12">
+                    <div class="alert alert-primary" role="alert">
+                        <strong>El promedio de los alumnos es: <span id="imprimir"></span></strong>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>  
+
     <!-- Optional JavaScript -->
     <script src="./app.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
