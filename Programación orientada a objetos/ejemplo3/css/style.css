@@ -1,0 +1,20 @@
+.size-container{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    padding: 0;
+}
+
+.size-container *{
+    position: absolute;
+}
+
+.size-class{
+display: block;
+width: 7%;
+position:absolute;
+
+}
+.container{
+    padding: 0;
+}
