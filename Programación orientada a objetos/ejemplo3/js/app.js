@@ -2,10 +2,16 @@
 
 EventListener();
 
+let arrayPositionPrize=[];
+
 function EventListener() {
     document.addEventListener('keydown', movecar);
     document.getElementById('contenedor').addEventListener('click',setprize);
+    
 }
+
+
+
 
 let car = new Car(0, 0);
 
@@ -29,6 +35,13 @@ function movecar(event) {
             break;
     }
 
+    if(arrayPositionPrize.length>=0){
+
+      let resultado=  car.currentPosition(arrayPositionPrize,image);
+
+      console.log(resultado);
+    }
+
 }
 
 function setprize(event){
@@ -39,9 +52,11 @@ function setprize(event){
     let prize = new Prize();
 
     prize.SetPositionX(event.x);
-
     prize.SetPositionY(event.y);
-    prize.createelementimg();
+
+    arrayPositionPrize.push(prize.createelementimg());
+    
+    console.log(arrayPositionPrize);
     
     
 }

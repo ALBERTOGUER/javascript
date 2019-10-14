@@ -2,49 +2,58 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Tweets</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="./css/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
+
     <div class="container">
         <div class="jumbotron">
             <div class="row">
-                <div class="col-12">
+                <div class="col-12 text-center">
+                    <h1>
+                        Tweets Local storage
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 pull-left">
                     <div class="form-group">
-                        <label for=""></label>
-                        <input type="text" id="valor" class="form-control" placeholder="Numero a buscar" aria-describedby="helpId">
+                        <form action="#" id="formulario">
+                            <label for="tweet" class="">Tweet:</label>
+                            <textarea name="" id="tweet" rows="3" class="form-control"></textarea>
+                            <button type="submit" class="mt-2 btn btn-outline-info btn-block">Agregar tweet</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <h2>
+                        Tweets: <i class="fab fa-twitter-square text-info"></i>
+                    </h2>
+                    <div id="lista-tweets">
 
                     </div>
                 </div>
             </div>
-
-           
-
-            <div class="row">
-                <div class="col-12">
-                    <ul id="array" class="list-group" role="alert">
-                    </ul>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <button type="button" id="btnfind" class="btn btn-primary btn-lg btn-block"></button>
-                </div>
-            </div>
-            
         </div>
     </div>
 
+
+
     <!-- Optional JavaScript -->
-    <script src="./app.js"></script>
+    <script src="https://kit.fontawesome.com/d29ee77bb6.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    
+    <script src="./js/class.tweet.js"></script>
+    <script src="./js/app.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

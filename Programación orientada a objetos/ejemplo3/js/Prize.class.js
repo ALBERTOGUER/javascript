@@ -1,50 +1,64 @@
-class Prize{
+class Prize {
     posicionX = 0;
+    PosicionY = 0;
+     sizeMargin = 0;
 
-    PosicionY=0;
-
-    constructor(){}
-
-
-
- SetPositionX(posicionX){
-    this.posicionX=posicionX;
-
-}
-
- SetPositionY(posicionY){
-    this.PosicionY=posicionY
+    constructor() {
+        this.calculatesizemargin();
+     }
 
 
-}
-// get PositionX(){
-//     this.posicionX=posicionX;
 
-// }
+    SetPositionX(posicionX) {
+        this.posicionX = posicionX;
 
-// get PositionY(){
-//     this.PosicionY=posicionY
+    }
 
-
-// }
+    SetPositionY(posicionY) {
+        this.PosicionY = posicionY
 
 
-createelementimg(){
-    let margincontainer= window.getComputedStyle(document.getElementById('contenedor')).marginLeft;
+    }
 
-    margincontainer=margincontainer.substring(0,margincontainer.length-2);
+     calculatesizemargin() {
+        let marginContainer = window.getComputedStyle(document.getElementById('contenedor'));
+        let marginLeft = marginContainer.getPropertyValue('margin-left');
+        this.sizeMargin = marginLeft.substring(0, marginLeft.length - 2)
+    }
+    // get PositionX(){
+    //     this.posicionX=posicionX;
 
-    let imagecreate =document.createElement('img');
+    // }
 
-    imagecreate.setAttribute('src','./imagenes/popo.png');
-    imagecreate.style.width="50px";
-
-    imagecreate.style.left=`${this.posicionX-margincontainer}px`;
-    imagecreate.style.top=`${this.PosicionY}px`;
+    // get PositionY(){
+    //     this.PosicionY=posicionY
 
 
-    document.getElementById('contenedor').appendChild(imagecreate);
-}
+    // }
+
+
+    createelementimg() {
+        // let margincontainer= window.getComputedStyle(document.getElementById('contenedor')).marginLeft;
+
+        // margincontainer=margincontainer.substring(0,margincontainer.length-2);
+
+        let imagecreate = document.createElement('img');
+
+        imagecreate.setAttribute('src', './imagenes/popo.png');
+        imagecreate.style.width = "50px";
+
+        let posX=(this.posicionX - this.sizeMargin)-25;
+        let posY=this.PosicionY-25
+
+
+        imagecreate.style.left = `${posX}px`;
+        imagecreate.style.top = `${posY}px`;
+
+
+        document.getElementById('contenedor').appendChild(imagecreate);
+
+        return {posX,posY}
+    }
 }
 
 
