@@ -48,32 +48,77 @@ class Contacto {
     }
 
     createContact(dataContact) {
-        let data = JSON.stringify(dataContact);
-        const li = document.createElement('li');
-        li.classList = 'list-group-item rounded-pill text-break';
-        
 
-        const btnClose = document.createElement('button');
-        btnClose.classList = 'close';
+        let flag = this.existente(dataContact);
 
-        const spanclose = document.createElement('span');
-        spanclose.classList = 'badge badge-pill badge-light text-danger';
+        if (flag == false) {
+            let data = JSON.stringify(dataContact);
 
-        spanclose.setAttribute = ('area-hidden', 'true');
-        spanclose.textContent = 'x';
 
-        btnClose.appendChild(spanclose);
-        li.innerText = data;
-        listaAgenda.appendChild(li);
-        li.appendChild(btnClose);
-        this.LS.SaveContactLocalStorage(dataContact);
+            const li = document.createElement('li');
+            li.classList = 'list-group-item rounded-pill text-break';
+
+
+            const btnClose = document.createElement('button');
+            btnClose.classList = 'close';
+
+            const spanclose = document.createElement('span');
+            spanclose.classList = 'badge badge-pill badge-light text-danger';
+
+            spanclose.setAttribute = ('area-hidden', 'true');
+            spanclose.textContent = 'x';
+
+
+            btnClose.appendChild(spanclose);
+            li.innerText = data;
+            listaAgenda.appendChild(li);
+            li.appendChild(btnClose);
+
+
+
+            this.LS.SaveContactLocalStorage(dataContact);
+        }else{
+            Swal.fire({
+                type: 'error',
+                html: '<h5>El numero ya existe</h5>'
+            })
+        }
+    }
+
+    showcontactsLS() {
+        let ContactosLS = this.LS.getcontactLocalStorage();
+
+        ContactosLS.forEach(function (contacto) {
+            contacto = JSON.stringify(contacto);
+            // let data = JSON.stringify(dataContact);
+            const li = document.createElement('li');
+            li.classList = 'list-group-item rounded-pill text-break';
+
+
+            const btnClose = document.createElement('button');
+            btnClose.classList = 'close';
+
+            const spanclose = document.createElement('span');
+            spanclose.classList = 'badge badge-pill badge-light text-danger';
+
+            spanclose.setAttribute = ('area-hidden', 'true');
+            spanclose.textContent = 'x';
+
+
+            btnClose.appendChild(spanclose);
+            li.innerText = contacto;
+            listaAgenda.appendChild(li);
+            li.appendChild(btnClose);
+        });
+
+
     }
 
     Erasecontactscreen(event) {
         event.preventDefault();
 
         let Contacto;
-        
+
         // console.log(event);
         // console.log(event.target);
 
@@ -82,7 +127,7 @@ class Contacto {
             Contacto = event.target.parentElement.parentElement;
             console.log(Contacto);
             // console.log(Contacto.textContent);
-            
+
 
             Contacto.remove();
 
@@ -98,6 +143,31 @@ class Contacto {
     }
 
 
+    existente(dataCourse) {
+        let contactosLS;
 
 
+        console.log(dataCourse.Numero);
+
+        let existe = false;
+
+        contactosLS = this.LS.getcontactLocalStorage();
+
+
+
+        contactosLS.forEach(function (contactoLS) {
+            if (contactoLS.Numero === dataCourse.Numero) {
+                existe = true
+
+            }
+
+        });
+
+        return existe
+
+    }
 }
+
+
+
+

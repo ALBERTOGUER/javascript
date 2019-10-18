@@ -2,7 +2,8 @@ let array = [];
 let array2 = [];
 let btnfind = document.getElementById('btnfind');
 let varhelp = 0;
-
+let valor = 0;
+let contador = 0;
 
 Evento();
 
@@ -12,6 +13,8 @@ function Evento() {
 }
 
 function find() {
+    valor = Number(document.getElementById('valor').value);
+    console.log(valor);
 
     for (let i = 0; i < 25; i++) {
         array[i] = Math.floor(Math.random() * 100);
@@ -34,24 +37,44 @@ function find() {
     }
 
     let sizerray = array.length
-    let valor = Number(document.getElementById('valor').value)
+    sizerray = Math.ceil(sizerray / 2);
+    console.log(sizerray);
 
-    for(let n=0;n<5;n++){
-         sizerray = Math.ceil(sizerray/2);
-         if(valor==array[sizerray]){
-          console.log(`el numero esta en la posicion${sizerray}`)
-         }
 
-         else if(valor<array[sizerray].value){
-             for(let t = 0; t<sizerray;t++){
-                 array2[t]=sizerray[2];
-             }
 
-         }else{
-             for(let t=sizerray;t=)
+    for (let n = 0; n < 5; n++) {
+        // console.log(array[sizerray].value);
 
-         }
+        if (valor == array[sizerray]) {
+            console.log(`el numero esta en la posicion ${sizerray}`);
+
+
+        }
+
+        else if (valor < array[sizerray]) {
+            for (let t = 0; t < sizerray; t++) {
+                array2[t] = array[t];
+                
+
+            }
+
+        } else if(valor > array[sizerray]){
+            for (let t = sizerray; t<array.length; t++) {
+
+                array2[contador] = array[t];
+                contador++;
+
+            }
+            contador =0;
+
+        }
+        // sizerray = Math.ceil(sizerray / 2);
     }
-    console.log(array);
+    // console.log(array[sizerray]);
 
+
+    console.log(array);
+    console.log(array2);
 }
+
+

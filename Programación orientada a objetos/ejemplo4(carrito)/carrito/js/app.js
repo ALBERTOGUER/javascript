@@ -28,7 +28,7 @@ function Getcourse(event) {
         let Course = event.target.parentElement.parentElement;
         // console.log(Courses);
         objectCar.readDataCourse(Course, listaCursos);
-        objectCar.existente(event);
+        // objectCar.existente(event);
     }
 
 }

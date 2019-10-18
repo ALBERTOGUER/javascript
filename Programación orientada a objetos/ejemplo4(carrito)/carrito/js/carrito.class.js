@@ -13,18 +13,26 @@ class Carrito {
             id: curso.querySelector('a').getAttribute('data-id')
         }
 
+        console.log(dataCourse.id);
+
+
+       
+        this.addCourseCar(dataCourse, listaCursos);
+        
         // console.log(dataCourse);
 
-
-        this.addCourseCar(dataCourse, listaCursos)
     }
 
     addCourseCar(dataCourse, listaCursos) {
         const row = document.createElement('tr');
-// metodo
+        let flag = this.existente(dataCourse);
+        console.log(flag);
+        
 
 
 
+
+        if (flag == false) {
         row.innerHTML = `<td><img src="${dataCourse.imagen} " width="100"></td>
         <td>${dataCourse.titulo}</td>
         <td>${dataCourse.precio}</td>
@@ -38,9 +46,15 @@ class Carrito {
             type: 'success',
             html: '<h5>Agregado al carrito</h5>'
         })
+        }else{
+            Swal.fire({
+                type: 'error',
+                html: '<h5>El curso ya ha sido agregado</h5>'
+            })
+        }
 
-        
-        
+
+
 
 
     }
@@ -106,18 +120,22 @@ class Carrito {
         })
     }
 
-    existente(datacourse) {
-        
+    existente(dataCourse) {
+
         let cursosLS;
-        let curso = datacourse.id
-        existe=false
-      
-        cursosLS = LS.getcoursesLocalStorage();
+
+
+        console.log(dataCourse.id);
+
+        let existe = false;
+
+        cursosLS = this.LS.getcoursesLocalStorage();
+
 
 
         cursosLS.forEach(function (cursoLS) {
-            if (cursoLS.id === curso) {
-                existe=true
+            if (cursoLS.id === dataCourse.id ) {
+                existe = true
 
             }
 
